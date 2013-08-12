@@ -1,0 +1,31 @@
+﻿<hr>
+<div class="panel panel-info">
+	<h3 class="panel-heading">{{question.title}}</h3>
+	<p>{{question.text}}</p>
+	
+	<p ng-hide="question.answers">No answers</p>
+	<ul class="list-group" ng-show="question.answers">
+		<li class="list-group-item" ng-repeat="a in question.answers | filter:search | orderBy:'name'">
+			<p>{{a.author}}: {{a.text}}</p>
+		</li>
+	</ul>
+</div>
+
+
+<h4>Your answer</h4>
+<form name="answerForm">
+	<div class="input-group form-group" ng-class="{error: myForm.name.$invalid}">
+		<label class="input-group-addon input-sm">Username</label>
+		<input type="text" name="author" class="form-control input-sm" placeholder="Username" ng-model="author" required>
+		<span ng-show="myForm.name.$error.required" class="help-inline">
+				Required</span>
+	</div>
+	
+	<div class="input-group form-group" ng-class="{error: myForm.name.$invalid}">
+		<label class="input-group-addon input-sm"> Answer </label>
+		<textarea name="text" class="form-control input-sm" ng-model="text" required></textarea>
+	</div>
+	
+	<button ng-click="saveAnswer()" ng-disabled="answerForm.$invalid"
+					class="btn btn-primary">Post your answer</button>
+</form>

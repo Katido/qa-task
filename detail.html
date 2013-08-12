@@ -1,0 +1,26 @@
+﻿<h3 ng-hide="question.$id">Add new question</h3>
+<h3 ng-show="question.$id">Edit a question</h3>
+<form name="questionForm">
+	<div class="input-group form-group" ng-class="{error: questionForm.name.$invalid}">
+		<label class="input-group-addon input-sm">Username</label>
+		<input type="text" name="author" class="form-control input-sm" placeholder="Username" ng-model="question.author" required>
+		<span ng-show="questionForm.name.$error.required" class="help-inline">
+				Required</span>
+	</div>
+	<div class="input-group form-group" ng-class="{error: questionForm.name.$invalid}">
+		<label class="input-group-addon input-sm">Title</label>
+		<input type="text" name="title"  class="form-control input-sm" placeholder="Title" ng-model="question.title" required>
+		<span ng-show="questionForm.name.$error.required" class="help-inline">
+				Required</span>
+	</div>
+	<div class="input-group form-group" ng-class="{error: questionForm.name.$invalid}">
+		<label class="input-group-addon input-sm">Question</label>
+		<textarea name="text"  class="form-control input-sm" ng-model="question.text" required></textarea>
+	</div>
+	
+	<div class="btn-group">
+		<button class="btn btn-primary" ng-click="save()" ng-disabled="isClean() || questionForm.$invalid">Save</button>
+		<button class="btn btn-danger" ng-click="destroy()" ng-show="question.$id">Delete</button>
+		<a href="#/" class="btn btn-default">Cancel</a>
+	</div>
+</form>

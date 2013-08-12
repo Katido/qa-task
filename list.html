@@ -1,0 +1,25 @@
+﻿<div class="input-group form-group" ng-class="{error: myForm.name.$invalid}">
+	<span class="input-group-addon input-sm">Search</span>
+	<input type="text" class="form-control input-sm search-query" placeholder="Search" ng-model="search">
+</div>
+
+<ul class="breadcrumb">
+	<li>Filter questions: </li>
+	<li><a href="" ng-click="show('all')">All</a></li>
+	<li><a href="" ng-click="show(true)">Answered</a></li>
+	<li><a href="" ng-click="show(false)">Unanswered</a></li>
+</ul>
+
+<ul class="list-group">
+	<li class="list-group-item" ng-repeat="q in question | filter:search | orderBy:'name'" ng-show="showFilter == 'all' || showFilter == q.answered">
+		<a href="#/edit/{{q.$id}}" title="Edit"><span class="glyphicon glyphicon-pencil"></span></a>
+		<a href="#/question/{{q.$id}}">{{q.title}}</a>
+		<small>by {{q.author}} </small>
+		
+		<span class="badge" ng-show="q.answers && q.answers.length">Answers: {{q.answers.length}}</span>
+
+	</li>
+</ul>
+<div class="btn-group">
+	<a href="#/new" class="btn btn-primary">Ask Question</a>
+</div>
