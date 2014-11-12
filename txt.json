@@ -1,0 +1,17 @@
+{
+  "question": {
+    "id": 1,
+    "title": "главный вопрос",
+    "tуче": "Есть ли жизнь на Марсе?",
+    "answered": true,
+    "author": "Ksenia",
+    "answers": [{
+      "author": "Ksenia",
+      "text": "Y"
+    },
+    {
+      "author": "Ksenia",
+      "text": "N"
+    }]
+  }
+}
